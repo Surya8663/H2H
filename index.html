@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hack2Hire 1.0 | T John Institute of Technology</title>
+  <meta name="description" content="Hack2Hire 1.0 — Build. Compete. Get Hired. A hackathon by T John Institute of Technology (TJIT). Register now and showcase your skills!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <h1 class="glitch" data-text="H2H">H2H</h1>
+      <div class="loading-bar"><div class="loading-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-container">
+    <div id="scroll-progress"></div>
+  </div>
+
+  <!-- Particle Canvas Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Floating Registration Badge -->
+  <div class="floating-badge" id="floating-badge">
+    <span class="badge-dot"></span>
+    🟢 Registrations Open
+  </div>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">H2H</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#timeline" class="nav-link">Timeline</a></li>
+        <li><a href="#prizes" class="nav-link">Prizes</a></li>
+        <li><a href="#guidelines" class="nav-link">Guidelines</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="scanlines"></div>
+    <div class="hero-content">
+      
+      <!-- 1. T John Logo at Top -->
+      <img src="college-logo.jpeg" alt="TJIT Logo" class="hero-tjohn-logo">
+      
+      <!-- 2. Main Title -->
+      <h1 class="glitch" data-text="HACK2HIRE 1.0">HACK2HIRE 1.0</h1>
+      <p class="subtitle">
+        <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
+      </p>
+
+      <!-- 3. Hackathon Logo with Rotating Ring -->
+      <div class="hero-spinner-container">
+        <div class="spinner-ring"></div>
+        <img src="hackathon-logo.jpeg" alt="Hack2Hire Event Logo" class="hero-main-logo pulse-btn">
+      </div>
+
+      <!-- 4. CTA Buttons -->
+      <div class="cta-buttons">
+        <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="btn btn-glow" id="btn-register">Register Now</a>
+        <a href="#about" class="btn btn-outline" id="btn-know-more">Know More</a>
+      </div>
+      <div class="countdown-wrapper">
+        <p class="countdown-label">Registration Deadline</p>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-value" id="cd-days">00</span>
+            <span class="countdown-unit">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="cd-hours">00</span>
+            <span class="countdown-unit">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="cd-minutes">00</span>
+            <span class="countdown-unit">Min</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="cd-seconds">00</span>
+            <span class="countdown-unit">Sec</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- WHAT IS HACK2HIRE SECTION -->
+  <section class="section section-alt" id="what-is">
+    <div class="container">
+      <div class="what-is-card scroll-reveal">
+        <div class="what-is-header">
+          <div class="what-is-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="#00f0ff" stroke-width="2" opacity="0.3"/>
+              <circle cx="24" cy="24" r="12" stroke="#00f0ff" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="24" cy="24" r="4" fill="#00f0ff"/>
+              <line x1="24" y1="4" x2="24" y2="12" stroke="#39ff14" stroke-width="1.5"/>
+              <line x1="24" y1="36" x2="24" y2="44" stroke="#39ff14" stroke-width="1.5"/>
+              <line x1="4" y1="24" x2="12" y2="24" stroke="#39ff14" stroke-width="1.5"/>
+              <line x1="36" y1="24" x2="44" y2="24" stroke="#39ff14" stroke-width="1.5"/>
+              <line x1="10" y1="10" x2="16" y2="16" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+              <line x1="32" y1="32" x2="38" y2="38" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+              <line x1="38" y1="10" x2="32" y2="16" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+              <line x1="16" y1="32" x2="10" y2="38" stroke="#00f0ff" stroke-width="1" opacity="0.6"/>
+            </svg>
+          </div>
+          <h2 class="section-title" style="margin-bottom: 0;">What is <span class="accent">Hack2Hire?</span></h2>
+        </div>
+        <p class="what-is-text">Hack2Hire is not just a hackathon — it's a <strong>hiring challenge</strong>. Build a real-world solution, impress the industry, and walk away with a <strong>Paid Internship</strong>.</p>
+        <div class="tag-pills">
+          <span class="tag-pill">#BuildToGetHired</span>
+          <span class="tag-pill tag-pill-green">#IndustryChallenge</span>
+          <span class="tag-pill">#PaidInternship</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT ARE WE DOING SECTION -->
+  <section class="section" id="what-we-do">
+    <div class="container">
+      <h2 class="section-title">What Are We <span class="accent">Doing?</span></h2>
+      <div class="cyber-drops-container">
+        <!-- Phase 01: Ideate -->
+        <div class="cyber-drop scroll-reveal" data-delay="0">
+          <div class="drop-content tint-blue">
+            <div class="drop-tag">Phase 01</div>
+            <div class="drop-icon">🛠</div>
+            <h3>Ideate</h3>
+            <p>Kickstart your journey with a 1-week online build phase. From the theme drop, brainstorm and develop your most innovative tech solution with your <strong>Team of 2 members</strong> (mandatory).</p>
+          </div>
+        </div>
+
+        <!-- Phase 02: Showcase -->
+        <div class="cyber-drop scroll-reveal" data-delay="1">
+          <div class="drop-content tint-green">
+            <div class="drop-tag">Phase 02</div>
+            <div class="drop-icon">⚡</div>
+            <h3>Showcase</h3>
+            <p>The elite Top 10 finalists will step onto the big stage! Present your innovation live before a prestigious panel of industry veterans and expert judges for the ultimate hackathon glory.</p>
+          </div>
+        </div>
+
+        <!-- Phase 03: Succeed -->
+        <div class="cyber-drop scroll-reveal" data-delay="2">
+          <div class="drop-content tint-purple">
+            <div class="drop-tag">Phase 03</div>
+            <div class="drop-icon">🏆</div>
+            <h3>Succeed</h3>
+            <p>Claim your victory and walk away with the coveted Paid Internships, a significant prize pool, and merit certificates. This is your launchpad for a blockbuster career in the tech industry.</p>
+          </div>
+        </div>
+      </div>
+      <div class="eligibility-banner scroll-reveal">
+        <div class="eligibility-icon">🎓</div>
+        <div class="eligibility-text">
+          <strong>Open to:</strong> 2nd & 3rd Year Students of CSE Department (CSE A, CSE B, DS, IoT) — T John Institute of Technology
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About <span class="accent">Hack2Hire</span></h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🚀</div>
+          <h3>Build</h3>
+          <p>Transform your ideas into working prototypes. Tackle real-world challenges with cutting-edge technology and innovation.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">⚔️</div>
+          <h3>Compete</h3>
+          <p>Go head-to-head with the brightest minds. Showcase your skills under pressure and prove your mettle in intense coding battles.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💼</div>
+          <h3>Get Hired</h3>
+          <p>Connect directly with top recruiters and companies. Stand out from the crowd and land your dream opportunity.</p>
+        </div>
+      </div>
+      <div class="about-description">
+        <p><strong>Hack2Hire 1.0</strong> is the flagship hackathon organized by <strong>T John Institute of Technology (TJIT)</strong>. This event bridges the gap between academic talent and industry demands. Whether you're a seasoned developer or a passionate beginner, this is your stage to shine.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE SECTION -->
+  <section class="section section-alt" id="timeline">
+    <div class="container">
+      <h2 class="section-title">Event <span class="accent">Timeline</span></h2>
+      <div class="timeline-v2">
+        <div class="timeline-v2-line"></div>
+
+        <div class="timeline-v2-item timeline-v2-left scroll-reveal" data-delay="0">
+          <div class="timeline-v2-content timeline-v2-blue">
+            <div class="timeline-v2-icon">📝</div>
+            <h3>Team Registration</h3>
+            <p class="timeline-v2-date">April 1–12, 2026</p>
+            <p>Team Registration opens via Luma. Join as a <strong>Team of 2 members</strong> (mandatory) and sign up before the deadline!</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-right scroll-reveal" data-delay="1">
+          <div class="timeline-v2-content timeline-v2-green">
+            <div class="timeline-v2-icon">💳</div>
+            <h3>Payment Window</h3>
+            <p class="timeline-v2-date">April 13–14, 2026 (until 11:59 PM)</p>
+            <p>Complete payment via HelloCB App. Entry fee: <strong>₹200/team</strong>.</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-green"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-left scroll-reveal" data-delay="2">
+          <div class="timeline-v2-content timeline-v2-blue">
+            <div class="timeline-v2-icon">🌙</div>
+            <h3>Themes Released!</h3>
+            <p class="timeline-v2-date">April 15 — Midnight</p>
+            <p>Hackathon themes go live at midnight. Get ready to ideate and strategize!</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-right scroll-reveal" data-delay="3">
+          <div class="timeline-v2-content timeline-v2-green">
+            <div class="timeline-v2-icon">💻</div>
+            <h3>Build Phase</h3>
+            <p class="timeline-v2-date">April 15–22, 2026</p>
+            <p>1 full week to build your solution. Design, develop, and deploy your project.</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-green"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-left scroll-reveal" data-delay="4">
+          <div class="timeline-v2-content timeline-v2-blue">
+            <div class="timeline-v2-icon">📤</div>
+            <h3>Submission Deadline</h3>
+            <p class="timeline-v2-date">April 22, 2026</p>
+            <p>Submit your <strong>GitHub Repo + Deployed Link + Demo Video + Project Brief</strong>. No extensions!</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-right scroll-reveal" data-delay="5">
+          <div class="timeline-v2-content timeline-v2-green">
+            <div class="timeline-v2-icon">🔍</div>
+            <h3>Screening Round</h3>
+            <p class="timeline-v2-date">Post-Submission</p>
+            <p>All submissions are reviewed. <strong>Top 10 Teams</strong> are shortlisted for the finals!</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-green"></div>
+        </div>
+
+        <div class="timeline-v2-item timeline-v2-left scroll-reveal" data-delay="6">
+          <div class="timeline-v2-content timeline-v2-blue">
+            <div class="timeline-v2-icon">🎤</div>
+            <h3>Final Presentations</h3>
+            <p class="timeline-v2-date">April 28, 2026</p>
+            <p>All Top 10 Teams present live in front of judges and industry experts. Winners are crowned!</p>
+          </div>
+          <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PRIZES SECTION -->
+  <section class="section" id="prizes">
+    <div class="container">
+      <h2 class="section-title">Prizes & <span class="accent">Rewards</span></h2>
+      <div class="podium-grid">
+        
+        <div class="prize-card prize-silver scroll-reveal podium-left" data-delay="1">
+          <div class="prize-rank">🥈</div>
+          <h3>2nd Place</h3>
+          <ul class="prize-list">
+            <li>Goodies 🎁</li>
+            <li>Certificate 📜</li>
+          </ul>
+        </div>
+
+        <div class="prize-card prize-gold scroll-reveal podium-center" data-delay="0">
+          <div class="prize-rank">🥇</div>
+          <h3>1st Place <br><span class="prize-sub">(Team of 2)</span></h3>
+          <ul class="prize-list">
+            <li>Paid Internship 💼</li>
+            <li>Certificate 📜</li>
+            <li>Goodies 🎁</li>
+          </ul>
+        </div>
+
+        <div class="prize-card prize-bronze scroll-reveal podium-right" data-delay="2">
+          <div class="prize-rank">🥉</div>
+          <h3>3rd Place</h3>
+          <ul class="prize-list">
+            <li>Minimal Goodies 🎁</li>
+            <li>Certificate 📜</li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="prizes-extra scroll-reveal">
+        <p>✨ Top 10 teams qualify for the Final Round on <strong>April 28th</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVALUATION CRITERIA SECTION -->
+  <section class="section section-alt" id="evaluation">
+    <div class="container">
+      <h2 class="section-title">Evaluation <span class="accent">Criteria</span></h2>
+      <div class="eval-card scroll-reveal">
+        
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">Innovation</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-1" data-width="20%"></div>
+          </div>
+        </div>
+        
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">Technical Strength</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-2" data-width="25%"></div>
+          </div>
+        </div>
+
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">Prototype Working</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-3" data-width="25%"></div>
+          </div>
+        </div>
+
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">Impact / Use Case</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-4" data-width="15%"></div>
+          </div>
+        </div>
+
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">UI/UX</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-5" data-width="5%"></div>
+          </div>
+        </div>
+
+        <div class="eval-item">
+          <div class="eval-label">
+            <span class="eval-name">Presentation</span>
+            
+          </div>
+          <div class="eval-bar-bg">
+            <div class="eval-bar-fill eval-color-6" data-width="10%"></div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDELINES SECTION -->
+  <section class="section" id="guidelines">
+    <div class="container">
+      <h2 class="section-title">Rules & <span class="accent">Guidelines</span></h2>
+      <div class="guidelines-container">
+        <ul class="gl-checklist">
+          <li class="scroll-reveal" data-delay="0"><span class="gl-icon">✅</span> Teams of exactly 2 members only — no solo registrations</li>
+          <li class="scroll-reveal" data-delay="1"><span class="gl-icon">✅</span> No pre-built or existing projects allowed</li>
+          <li class="scroll-reveal" data-delay="2"><span class="gl-icon">✅</span> On Day 1, create a GitHub repo and push your README with the problem statement</li>
+          <li class="scroll-reveal" data-delay="3"><span class="gl-icon">✅</span> Fill the Google Form shared on Day 1 with your repo link, project theme, and details</li>
+          <li class="scroll-reveal" data-delay="4"><span class="gl-icon">✅</span> All payments must be completed before the build phase begins (via HelloCB App)</li>
+          <li class="scroll-reveal" data-delay="5"><span class="gl-icon">✅</span> Submit before April 22 deadline — no extensions</li>
+          <li class="scroll-reveal" data-delay="6"><span class="gl-icon">✅</span> GitHub commit history will be evaluated — commit regularly!</li>
+          <li class="scroll-reveal" data-delay="7"><span class="gl-icon">✅</span> README must be descriptive and clearly explain your project</li>
+          <li class="scroll-reveal" data-delay="8"><span class="gl-icon">✅</span> You may use any tools, frameworks, or AI assistants</li>
+          <li class="scroll-reveal" data-delay="9"><span class="gl-icon">✅</span> Bonus points available for extra evaluation criteria</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER NOW SECTION -->
+  <section class="section section-alt" id="register-now">
+    <div class="container">
+      <div class="register-card scroll-reveal">
+        <h2 class="register-title glow-text">Ready to <span class="accent">Build Your Future?</span></h2>
+        <p class="register-subtext">Register between April 1–12. Payment via HelloCB App (April 13–14, 11:59 PM). <strong>₹200 per team.</strong></p>
+        <div class="register-action">
+          <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="btn btn-glow pulse-btn">Register on Luma →</a>
+        </div>
+        <p class="register-payment-note">Payment will be reflected in the HelloCB App by college management.</p>
+        <div class="register-closing">
+          <span class="pulsing-dot-green"></span> Registration closes April 12th
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Venue</h3>
+          <p>T John Institute of Technology<br />Gottigere, Bannerghatta Road<br />Bengaluru, Karnataka 560083</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🧩</div>
+          <h3>Tech Freedom</h3>
+          <p>Build with any language, framework, or AI tools. Your <strong>Innovation</strong> is our only limit.</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Phone</h3>
+          <p><a href="tel:+918618474453">+91 86184 74453</a><br /><a href="tel:+917338144731">+91 73381 44731</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE ORGANIZERS SECTION -->
+  <section class="section section-alt" id="organizers">
+    <div class="container">
+      <h2 class="section-title">Meet the <span class="accent">Organizers</span></h2>
+      
+      <div class="faculty-organiser scroll-reveal">
+        <div class="org-card org-faculty">
+          <div class="org-icon">🎓</div>
+          <h3>Dr. Sudaroli</h3>
+          <p class="org-role">Faculty Coordinator</p>
+        </div>
+      </div>
+
+      <div class="student-org-grid">
+        <div class="org-card scroll-reveal" data-delay="0">
+          <h3>Gomathi D</h3>
+          <p class="org-role">Student Organizer</p>
+          <a href="tel:+918618474453" class="org-contact"><span class="org-phone-icon">📞</span> 8618474453</a>
+        </div>
+        <div class="org-card scroll-reveal" data-delay="1">
+          <h3>G. Surya</h3>
+          <p class="org-role">Student Organizer</p>
+          <a href="tel:+918667234480" class="org-contact"><span class="org-phone-icon">📞</span> 8667234480</a>
+        </div>
+        <div class="org-card scroll-reveal" data-delay="2">
+          <h3>Ahmed Sufiyan</h3>
+          <p class="org-role">Student Organizer</p>
+          <a href="tel:+917483368337" class="org-contact"><span class="org-phone-icon">📞</span> 7483368337</a>
+        </div>
+        <div class="org-card scroll-reveal" data-delay="3">
+          <h3>Yashaswini C</h3>
+          <p class="org-role">Student Organizer</p>
+          <a href="tel:+917338144731" class="org-contact"><span class="org-phone-icon">📞</span> 7338144731</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TJIT SECTION -->
+  <section class="section" id="about-tjit">
+    <div class="container text-center scroll-reveal">
+      <div class="about-tjit-box">
+        <p class="about-tjit-text">"T John Institute of Technology — a place where students build, compete, and celebrate.<br> <span class="accent glow-text">Hack2Hire is by the students, for everyone.</span>"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <p class="footer-logo">Hack2Hire 1.0</p>
+          <p class="footer-tagline">Build. Compete. Get Hired.</p>
+        </div>
+        <div class="footer-center">
+          <p>&copy; 2025 <strong>T John Institute of Technology</strong> | CSE Department</p>
+        </div>
+        <div class="footer-right footer-socials">
+          <a href="#" class="social-icon" aria-label="GitHub">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Register Button -->
+  <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="floating-register btn btn-glow pulse-btn">Register 🚀</a>
+
+  <script src="script.js"></script>
+</body>
+</html>
