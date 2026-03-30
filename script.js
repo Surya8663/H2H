@@ -1,120 +1,11 @@
 /* ====================================
    Hack2Hire 1.0 — JavaScript
-   Particle Background, Glitch, Typing,
-   Countdown, Navbar, Smooth Scroll
+   Glitch, Typing, Countdown,
+   Navbar, Smooth Scroll
    ==================================== */
 
 (function () {
   'use strict';
-
-  // ===== PARTICLE BACKGROUND (Neural Network) =====
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let mouse = { x: null, y: null };
-  const PARTICLE_COUNT = 80;
-  const CONNECTION_DISTANCE = 150;
-  const PARTICLE_SPEED = 0.4;
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * PARTICLE_SPEED * 2;
-      this.vy = (Math.random() - 0.5) * PARTICLE_SPEED * 2;
-      this.radius = Math.random() * 2 + 0.5;
-      this.opacity = Math.random() * 0.5 + 0.2;
-    }
-
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-
-      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-      // Mouse repulsion
-      if (mouse.x !== null && mouse.y !== null) {
-        const dx = this.x - mouse.x;
-        const dy = this.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const force = (120 - dist) / 120;
-          this.x += dx * force * 0.02;
-          this.y += dy * force * 0.02;
-        }
-      }
-    }
-
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    particles = [];
-    const count = window.innerWidth < 768 ? Math.floor(PARTICLE_COUNT / 2) : PARTICLE_COUNT;
-    for (let i = 0; i < count; i++) {
-      particles.push(new Particle());
-    }
-  }
-
-  function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < CONNECTION_DISTANCE) {
-          const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    drawConnections();
-    requestAnimationFrame(animateParticles);
-  }
-
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-    initParticles();
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  window.addEventListener('mouseout', () => {
-    mouse.x = null;
-    mouse.y = null;
-  });
-
-  resizeCanvas();
-  initParticles();
-  animateParticles();
 
 
   // ===== TYPING ANIMATION =====
@@ -154,7 +45,9 @@
 
 
   // ===== COUNTDOWN TIMER =====
-  const deadline = new Date('April 12, 2026 23:59:59').getTime();
+  const countdownWrapper = document.querySelector('.countdown-wrapper');
+  const deadlineStr = countdownWrapper ? countdownWrapper.getAttribute('data-deadline') : null;
+  const deadline = deadlineStr ? new Date(deadlineStr).getTime() : new Date('April 12, 2026 23:59:59').getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -280,25 +173,36 @@
 
   // Observe cards and items
   document.querySelectorAll('.about-card, .prize-card, .guideline-item, .contact-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.classList.add('scroll-reveal');
     observer.observe(el);
   });
 
-  // Observe scroll-reveal elements (with staggered delays for feature cards)
+  // Observe scroll-reveal elements (with staggered delays)
   document.querySelectorAll('.scroll-reveal').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
     const delay = el.dataset.delay ? parseFloat(el.dataset.delay) * 0.2 : 0;
-    el.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
+    if (delay > 0) el.style.transitionDelay = `${delay}s`;
     observer.observe(el);
   });
 
   // Add revealed class styling
   const style = document.createElement('style');
-  style.textContent = '.revealed { opacity: 1 !important; transform: translateY(0) !important; }';
+  style.textContent = `
+    .scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .revealed { opacity: 1 !important; transform: translateY(0) !important; }
+  `;
   document.head.appendChild(style);
+
+  // ===== FAQ ACCORDION =====
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasActive = item.classList.contains('active');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+      // Toggle current
+      if (!wasActive) item.classList.add('active');
+    });
+  });
 
   // ===== PRELOADER =====
   window.addEventListener('load', () => {
@@ -316,15 +220,16 @@
   // ===== SCROLL PROGRESS & FLOATING BUTTON =====
   const scrollProgress = document.getElementById('scroll-progress');
   const floatingBtn = document.querySelector('.floating-register');
+  const floatingBadge = document.getElementById('floating-badge');
+  let scrollTicking = false;
   
-  window.addEventListener('scroll', () => {
-    // Progress Bar
+  function updateScrollUI() {
     const totalScroll = document.documentElement.scrollTop;
     const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollData = `${(totalScroll / windowHeight) * 100}%`;
+    const scrollPercent = (totalScroll / windowHeight) * 100;
     
     if (scrollProgress) {
-      scrollProgress.style.width = scrollData;
+      scrollProgress.style.width = `${scrollPercent}%`;
     }
     
     // Floating Button
@@ -335,6 +240,249 @@
         floatingBtn.classList.remove('visible');
       }
     }
+
+    // Hide floating badge when near footer
+    if (floatingBadge) {
+      if (scrollPercent > 90) {
+        floatingBadge.style.opacity = '0';
+        floatingBadge.style.pointerEvents = 'none';
+      } else {
+        floatingBadge.style.opacity = '1';
+        floatingBadge.style.pointerEvents = 'auto';
+      }
+    }
+
+    scrollTicking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(updateScrollUI);
+      scrollTicking = true;
+    }
+  });
+  // ===== TIMELINE DROPLET ANIMATION =====
+  const timelineDroplets = document.querySelector('.timeline-droplets');
+  if (timelineDroplets) {
+    const icons = [
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-plain.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg'
+    ];
+
+    function spawnDroplet() {
+      const droplet = document.createElement('div');
+      droplet.className = 'timeline-logo-droplet';
+      
+      // Random icon
+      const icon = icons[Math.floor(Math.random() * icons.length)];
+      droplet.style.backgroundImage = `url(${icon})`;
+      
+      // Random horizontal position (5% to 95%)
+      const x = 5 + Math.random() * 90;
+      droplet.style.left = `${x}%`;
+      
+      // Random height to fall to (different depths within the timeline)
+      // We force some to go deeper to cover the whole section
+      const sectionHeight = timelineDroplets.offsetHeight;
+      const dropY = (0.2 + Math.random() * 0.8) * sectionHeight; 
+      droplet.style.setProperty('--drop-y', dropY);
+      
+      // Constant speed based duration so depth doesn't look rushed
+      const duration = 3 + (dropY / 400); 
+      droplet.style.animation = `dropletFallPop ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+
+      timelineDroplets.appendChild(droplet);
+      
+      // Cleanup
+      setTimeout(() => droplet.remove(), duration * 1000);
+    }
+
+    // Spawn "one by one" - faster rate for better density over long sections
+    setInterval(spawnDroplet, 1200);
+  }
+
+
+  // ===== PARTICLE NETWORK BACKGROUND =====
+  class ParticleNetwork {
+    constructor() {
+      this.canvas = document.getElementById('particle-canvas');
+      this.ctx = this.canvas.getContext('2d');
+      this.particles = [];
+      this.particleCount = window.innerWidth < 768 ? 30 : window.innerWidth < 1024 ? 60 : 100;
+      this.mouse = { x: null, y: null, radius: 150 };
+      this.isVisible = true;
+      
+      this.init();
+      this.animate();
+      
+      window.addEventListener('resize', () => this.resize());
+      window.addEventListener('mousemove', (e) => {
+        this.mouse.x = e.x;
+        this.mouse.y = e.y;
+        
+        // Move background glow
+        const glow = document.getElementById('mouse-glow');
+        if (glow) {
+          glow.style.left = `${e.clientX}px`;
+          glow.style.top = `${e.clientY}px`;
+        }
+      });
+      window.addEventListener('mouseout', () => {
+        this.mouse.x = null;
+        this.mouse.y = null;
+      });
+    }
+
+    init() {
+      this.resize();
+      this.particles = [];
+      for (let i = 0; i < this.particleCount; i++) {
+        this.particles.push({
+          x: Math.random() * this.canvas.width,
+          y: Math.random() * this.canvas.height,
+          size: Math.random() * 2 + 1,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          color: Math.random() > 0.5 ? '#00f0ff' : '#a855f7'
+        });
+      }
+    }
+
+    resize() {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+    }
+
+    draw() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      for (let i = 0; i < this.particles.length; i++) {
+        let p = this.particles[i];
+        
+        // Mouse Interaction
+        if (this.mouse.x) {
+          const dx = p.x - this.mouse.x;
+          const dy = p.y - this.mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < this.mouse.radius) {
+            const force = (this.mouse.radius - dist) / this.mouse.radius;
+            p.vx += dx / dist * force * 0.1;
+            p.vy += dy / dist * force * 0.1;
+          }
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        // Friction / Normalization
+        p.vx *= 0.98;
+        p.vy *= 0.98;
+        
+        // Bounce
+        if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        this.ctx.fillStyle = p.color;
+        this.ctx.fill();
+
+        // Lines
+        for (let j = i + 1; j < this.particles.length; j++) {
+          let p2 = this.particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist < 150) {
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = `rgba(168, 85, 247, ${1 - dist / 150})`;
+            this.ctx.lineWidth = 0.5;
+            this.ctx.moveTo(p.x, p.y);
+            this.ctx.lineTo(p2.x, p2.y);
+            this.ctx.stroke();
+          }
+        }
+      }
+    }
+
+    animate() {
+      if (this.isVisible) {
+        this.draw();
+      }
+      requestAnimationFrame(() => this.animate());
+    }
+  }
+
+  // ===== TERMINAL OVERLAY SIMULATOR =====
+  class TerminalSimulator {
+    constructor() {
+      this.container = document.getElementById('terminal-overlay');
+      this.lines = [
+        'Initializing Hack2Hire...',
+        'Loading participants...',
+        'Connecting to mainframes...',
+        'Submissions incoming...',
+        'Scanning for high performance...',
+        'Encrypting data packets...',
+        'Compiling innovative solutions...',
+        'Fetching recruitment status...',
+        'Optimizing system resources...',
+        'Bridge connection established...',
+        'Status: ACTIVE',
+        'User: ADMIN_SECURE_BY_TJIT',
+        'Kernel version 1.0.4 loaded.'
+      ];
+      this.init();
+    }
+
+    init() {
+      setInterval(() => this.spawnLine(), 2500);
+      // Spawn few initial lines
+      for(let i=0; i<5; i++) {
+        setTimeout(() => this.spawnLine(), i * 500);
+      }
+    }
+
+    spawnLine() {
+      const line = document.createElement('div');
+      line.className = 'terminal-line';
+      const text = this.lines[Math.floor(Math.random() * this.lines.length)];
+      line.textContent = `> ${new Date().toLocaleTimeString()} :: ${text}`;
+      this.container.appendChild(line);
+      
+      // Cleanup
+      setTimeout(() => line.remove(), 20000);
+    }
+  }
+
+
+  // FLOATING AI TECH SHAPES REMOVED
+
+  // AI FOOTBALL SIMULATION REMOVED
+
+  // Initialize Enhanced Background Effects
+  window.addEventListener('DOMContentLoaded', () => {
+    const particleNet = new ParticleNetwork();
+    new TerminalSimulator();
+    // ShapeSpawner logic removed as requested
+
+    // Pause heavy animations when tab not visible
+    document.addEventListener('visibilitychange', () => {
+      particleNet.isVisible = !document.hidden;
+    });
+  });
+
+  // ===== SMOOTH ANCHOR HIGHLIGHT =====
+  // Add subtle hover sound effect (visual feedback)
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
   });
 
 })();

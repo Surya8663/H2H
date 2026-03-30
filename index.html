@@ -8,9 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Background Layers -->
+  <div class="bg-layers-container">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-gradient-layer"></div>
+    <div class="bg-grid-layer"></div>
+    <div class="bg-shapes-layer" id="bg-shapes"></div>
+    <div class="bg-scanning-line"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div id="terminal-overlay"></div>
+    <div id="mouse-glow"></div>
+  </div>
 
   <!-- Preloader -->
   <div id="preloader">
@@ -24,9 +38,6 @@
   <div class="scroll-progress-container">
     <div id="scroll-progress"></div>
   </div>
-
-  <!-- Particle Canvas Background -->
-  <canvas id="particle-canvas"></canvas>
 
   <!-- Floating Registration Badge -->
   <div class="floating-badge" id="floating-badge">
@@ -46,24 +57,32 @@
         <li><a href="#timeline" class="nav-link">Timeline</a></li>
         <li><a href="#prizes" class="nav-link">Prizes</a></li>
         <li><a href="#guidelines" class="nav-link">Guidelines</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+
+  <!-- Interactive Particle Matrix Canvas -->
   <section class="hero" id="hero">
     <div class="scanlines"></div>
     <div class="hero-content">
       
       <!-- 1. T John Logo at Top -->
       <img src="college-logo.jpeg" alt="TJIT Logo" class="hero-tjohn-logo">
-      
+      <div class="hero-header-stack">
+        <div class="dept-line slide-in-top">DEPARTMENT OF <span class="highlight-cse">CSE</span></div>
+        <div class="presents-line slide-in-bottom">PRESENTS</div>
+      </div>
+
       <!-- 2. Main Title -->
       <h1 class="glitch" data-text="HACK2HIRE 1.0">HACK2HIRE 1.0</h1>
+      <p class="hero-format"><span>Online Hackathon</span> • 7 Days Build • Final Offline Presentation</p>
       <p class="subtitle">
         <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
       </p>
+      <div class="hero-badge">🏆 Paid Internship for Winners</div>
 
       <!-- 3. Hackathon Logo with Rotating Ring -->
       <div class="hero-spinner-container">
@@ -76,7 +95,7 @@
         <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="btn btn-glow" id="btn-register">Register Now</a>
         <a href="#about" class="btn btn-outline" id="btn-know-more">Know More</a>
       </div>
-      <div class="countdown-wrapper">
+      <div class="countdown-wrapper" data-deadline="2026-04-12T23:59:59">
         <p class="countdown-label">Registration Deadline</p>
         <div class="countdown" id="countdown">
           <div class="countdown-item">
@@ -100,6 +119,111 @@
     </div>
     <div class="hero-scroll-indicator">
       <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip scroll-reveal">
+    <div class="stats-strip-inner">
+      <div class="stat-item">
+        <span class="stat-value">2</span>
+        <span class="stat-label">Members / Team</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">7</span>
+        <span class="stat-label">Days Build Phase</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">10</span>
+        <span class="stat-label">Top Finalists</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">💼</span>
+        <span class="stat-label">Paid Internship</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH LOGOS WATERFALL -->
+  <section class="tech-waterfall-section">
+    <div class="waterfall-bg-black"></div>
+    <div class="waterfall-overlay"></div>
+    <div class="waterfall-overlay-bottom"></div>
+    
+    <div class="waterfall-split-container container">
+      <!-- Left Side: Header & Text -->
+      <div class="waterfall-left">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Industry <br><span class="accent">Standard Stack</span></h2>
+        <p class="waterfall-p">Master the tools that power the modern web, cloud, and AI. We've brought together the most sought-after technologies in the industry.</p>
+        <p class="waterfall-p" style="margin-top: 15px;">Build your hackathon project with any language, framework, or cloud provider you love. Your innovation is the only limit.</p>
+      </div>
+
+      <!-- Right Side: Clean Corner Waterfall -->
+      <div class="waterfall-right">
+        <div class="waterfall-container">
+          
+          <!-- Track 1 -->
+          <div class="waterfall-track track-fast">
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-amazonwebservices-original colored"></i><span>AWS</span></div>
+              <div class="wf-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+              <div class="wf-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+              <div class="wf-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+              <div class="wf-item"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span></div>
+              <div class="wf-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+            </div>
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-amazonwebservices-original colored"></i><span>AWS</span></div>
+              <div class="wf-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+              <div class="wf-item"><i class="devicon-react-original colored"></i><span>React</span></div>
+              <div class="wf-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+              <div class="wf-item"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span></div>
+              <div class="wf-item"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+            </div>
+          </div>
+
+          <!-- Track 2 -->
+          <div class="waterfall-track track-medium">
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-googlecloud-plain colored"></i><span>GCP</span></div>
+              <div class="wf-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+              <div class="wf-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+              <div class="wf-item"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+              <div class="wf-item"><span style="font-size: 3rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));">🧠</span><span>OpenAI</span></div>
+              <div class="wf-item"><i class="devicon-kubernetes-plain colored"></i><span>K8s</span></div>
+            </div>
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-googlecloud-plain colored"></i><span>GCP</span></div>
+              <div class="wf-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+              <div class="wf-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+              <div class="wf-item"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+              <div class="wf-item"><span style="font-size: 3rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));">🧠</span><span>OpenAI</span></div>
+              <div class="wf-item"><i class="devicon-kubernetes-plain colored"></i><span>K8s</span></div>
+            </div>
+          </div>
+
+          <!-- Track 3 -->
+          <div class="waterfall-track track-slow">
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-azure-plain colored"></i><span>Azure</span></div>
+              <div class="wf-item"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+              <div class="wf-item"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+              <div class="wf-item"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+              <div class="wf-item"><i class="devicon-postgresql-plain colored"></i><span>Postgres</span></div>
+              <div class="wf-item"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
+            </div>
+            <div class="waterfall-content">
+              <div class="wf-item"><i class="devicon-azure-plain colored"></i><span>Azure</span></div>
+              <div class="wf-item"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+              <div class="wf-item"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+              <div class="wf-item"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
+              <div class="wf-item"><i class="devicon-postgresql-plain colored"></i><span>Postgres</span></div>
+              <div class="wf-item"><i class="devicon-tailwindcss-original colored"></i><span>Tailwind</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -208,6 +332,7 @@
 
   <!-- TIMELINE SECTION -->
   <section class="section section-alt" id="timeline">
+    <div class="timeline-droplets"></div>
     <div class="container">
       <h2 class="section-title">Event <span class="accent">Timeline</span></h2>
       <div class="timeline-v2">
@@ -288,6 +413,46 @@
   </section>
 
 
+  <!-- INTERNSHIP REWARD SECTION -->
+  <section class="section internship-reward-section" id="internship-offer">
+    <div class="container container-reward">
+      <h2 class="section-title">Grand <span class="accent">Reward</span></h2>
+      <div class="reward-content-wrapper">
+        <div class="company-orb orb-aws"><i class="devicon-apple-original" style="color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.8);"></i></div>
+        <div class="company-orb orb-google"><i class="devicon-google-plain colored"></i></div>
+        <div class="company-orb orb-microsoft"><i class="devicon-windows8-original colored"></i></div>
+        <div class="company-orb orb-meta"><i class="devicon-amazonwebservices-plain" style="color: #FF9900; filter: drop-shadow(0 0 10px rgba(255,153,0,0.8));"></i></div>
+        
+        <div class="digital-offer-card scroll-reveal">
+          <div class="card-glow-bg"></div>
+          <div class="digital-offer-inner">
+            <div class="offer-data-corners"></div>
+            <div class="offer-header">
+              <span class="offer-badge pulse">Official Offer</span>
+              <div class="offer-id">#H2H-2026-CSE</div>
+            </div>
+            <div class="offer-title">PAID INTERNSHIP</div>
+            <div class="offer-subtitle">FOR HACK2HIRE 1.0 WINNERS</div>
+            <div class="offer-details">
+              <div class="detail-item">
+                <span class="detail-label">Status</span>
+                <span class="detail-value text-green">Guaranteed</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Department</span>
+                <span class="detail-value">CSE</span>
+              </div>
+            </div>
+            <div class="offer-footer">
+              <img src="college-logo.jpeg" alt="TJIT" class="offer-footer-logo">
+              <div class="footer-text">Verified by <br> T John Institute of Technology</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRIZES SECTION -->
   <section class="section" id="prizes">
     <div class="container">
@@ -329,6 +494,17 @@
     </div>
   </section>
 
+  <!-- SPONSORS / PARTNERS -->
+  <section class="section section-alt" id="sponsors">
+    <div class="container">
+      <h2 class="section-title">Industry <span class="accent">Partners</span></h2>
+      <div class="sponsors-inner scroll-reveal">
+        <p class="sponsors-coming">Coming Soon</p>
+        <p>We are partnering with industry leaders to bring you the best hackathon experience. Stay tuned!</p>
+      </div>
+    </div>
+  </section>
+
   <!-- EVALUATION CRITERIA SECTION -->
   <section class="section section-alt" id="evaluation">
     <div class="container">
@@ -338,7 +514,6 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">Innovation</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-1" data-width="20%"></div>
@@ -348,7 +523,6 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">Technical Strength</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-2" data-width="25%"></div>
@@ -358,7 +532,6 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">Prototype Working</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-3" data-width="25%"></div>
@@ -368,7 +541,6 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">Impact / Use Case</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-4" data-width="15%"></div>
@@ -378,7 +550,6 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">UI/UX</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-5" data-width="5%"></div>
@@ -388,14 +559,11 @@
         <div class="eval-item">
           <div class="eval-label">
             <span class="eval-name">Presentation</span>
-            
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-6" data-width="10%"></div>
           </div>
         </div>
-
-
 
       </div>
     </div>
@@ -407,16 +575,16 @@
       <h2 class="section-title">Rules & <span class="accent">Guidelines</span></h2>
       <div class="guidelines-container">
         <ul class="gl-checklist">
-          <li class="scroll-reveal" data-delay="0"><span class="gl-icon">✅</span> Teams of exactly 2 members only — no solo registrations</li>
-          <li class="scroll-reveal" data-delay="1"><span class="gl-icon">✅</span> No pre-built or existing projects allowed</li>
-          <li class="scroll-reveal" data-delay="2"><span class="gl-icon">✅</span> On Day 1, create a GitHub repo and push your README with the problem statement</li>
-          <li class="scroll-reveal" data-delay="3"><span class="gl-icon">✅</span> Fill the Google Form shared on Day 1 with your repo link, project theme, and details</li>
-          <li class="scroll-reveal" data-delay="4"><span class="gl-icon">✅</span> All payments must be completed before the build phase begins (via HelloCB App)</li>
-          <li class="scroll-reveal" data-delay="5"><span class="gl-icon">✅</span> Submit before April 22 deadline — no extensions</li>
-          <li class="scroll-reveal" data-delay="6"><span class="gl-icon">✅</span> GitHub commit history will be evaluated — commit regularly!</li>
-          <li class="scroll-reveal" data-delay="7"><span class="gl-icon">✅</span> README must be descriptive and clearly explain your project</li>
-          <li class="scroll-reveal" data-delay="8"><span class="gl-icon">✅</span> You may use any tools, frameworks, or AI assistants</li>
-          <li class="scroll-reveal" data-delay="9"><span class="gl-icon">✅</span> Bonus points available for extra evaluation criteria</li>
+          <li class="scroll-reveal" data-delay="0"><span class="gl-icon"><i class="devicon-angularjs-plain colored"></i></span> Teams of exactly 2 members only — no solo registrations</li>
+          <li class="scroll-reveal" data-delay="1"><span class="gl-icon"><i class="devicon-bootstrap-plain colored"></i></span> No pre-built or existing projects allowed</li>
+          <li class="scroll-reveal" data-delay="2"><span class="gl-icon"><i class="devicon-cplusplus-plain colored"></i></span> On Day 1, create a GitHub repo and push your README with the problem statement</li>
+          <li class="scroll-reveal" data-delay="3"><span class="gl-icon"><i class="devicon-django-plain colored"></i></span> Fill the Google Form shared on Day 1 with your repo link, project theme, and details</li>
+          <li class="scroll-reveal" data-delay="4"><span class="gl-icon"><i class="devicon-electron-original colored"></i></span> All payments must be completed before the build phase begins (via HelloCB App)</li>
+          <li class="scroll-reveal" data-delay="5"><span class="gl-icon"><i class="devicon-flutter-plain colored"></i></span> Submit before April 22 deadline — no extensions</li>
+          <li class="scroll-reveal" data-delay="6"><span class="gl-icon"><i class="devicon-go-original-wordmark colored"></i></span> GitHub commit history will be evaluated — commit regularly!</li>
+          <li class="scroll-reveal" data-delay="7"><span class="gl-icon"><i class="devicon-html5-plain colored"></i></span> README must be descriptive and clearly explain your project</li>
+          <li class="scroll-reveal" data-delay="8"><span class="gl-icon"><i class="devicon-java-plain colored"></i></span> You may use any tools, frameworks, or AI assistants</li>
+          <li class="scroll-reveal" data-delay="9"><span class="gl-icon"><i class="devicon-kotlin-plain colored"></i></span> Bonus points available for extra evaluation criteria</li>
         </ul>
       </div>
     </div>
@@ -434,6 +602,47 @@
         <p class="register-payment-note">Payment will be reflected in the HelloCB App by college management.</p>
         <div class="register-closing">
           <span class="pulsing-dot-green"></span> Registration closes April 12th
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked <span class="accent">Questions</span></h2>
+      <div class="faq-container">
+        <div class="faq-item scroll-reveal" data-delay="0">
+          <button class="faq-question">Is this an online or offline hackathon? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>The build phase (7 days) is fully online. The Top 10 finalists will present offline at T John Institute of Technology on April 28, 2026.</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="1">
+          <button class="faq-question">What is the team size? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Each team must have exactly 2 members. Solo registrations are not allowed.</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="2">
+          <button class="faq-question">How do we make the payment? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Payment of ₹200/team must be completed via the HelloCB App between April 13–14, 2026 (by 11:59 PM).</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="3">
+          <button class="faq-question">When will the themes be announced? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Hack2Hire themes will go live at midnight on April 15, 2026. Teams begin building immediately after.</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="4">
+          <button class="faq-question">What is the submission format? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>You must submit a GitHub repo, deployed link, demo video, and a project brief by April 22, 2026. No extensions will be given.</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="5">
+          <button class="faq-question">Will we receive certificates? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Yes! All participants receive participation certificates. Top 3 winners and finalists receive merit certificates.</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="6">
+          <button class="faq-question">Can we use AI tools and frameworks? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Absolutely. You may use any tools, frameworks, APIs, or AI assistants. Innovation is what matters!</p></div>
+        </div>
+        <div class="faq-item scroll-reveal" data-delay="7">
+          <button class="faq-question">What are the prizes? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>1st place wins a Paid Internship + Certificate + Goodies. 2nd and 3rd place win Goodies + Certificates. All top 10 get recognition.</p></div>
         </div>
       </div>
     </div>
@@ -473,6 +682,7 @@
           <div class="org-icon">🎓</div>
           <h3>Dr. Sudaroli</h3>
           <p class="org-role">Faculty Coordinator</p>
+          <a href="https://www.linkedin.com/in/dr-sudaroli-dhananjeyan-581444163/" target="_blank" rel="noopener noreferrer" class="org-social"><span class="social-icon-li"></span> LinkedIn Profile</a>
         </div>
       </div>
 
@@ -481,21 +691,25 @@
           <h3>Gomathi D</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+918618474453" class="org-contact"><span class="org-phone-icon">📞</span> 8618474453</a>
+          <a href="https://www.linkedin.com/in/gomathi-dhandapani-47435b350" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="1">
           <h3>G. Surya</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+918667234480" class="org-contact"><span class="org-phone-icon">📞</span> 8667234480</a>
+          <a href="https://www.linkedin.com/in/g-surya-63a01b290" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="2">
           <h3>Ahmed Sufiyan</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+917483368337" class="org-contact"><span class="org-phone-icon">📞</span> 7483368337</a>
+          <a href="https://www.linkedin.com/in/ahmedsufiyan209/" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="3">
           <h3>Yashaswini C</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+917338144731" class="org-contact"><span class="org-phone-icon">📞</span> 7338144731</a>
+          <a href="https://www.linkedin.com/in/yashaswini-c-02b97235a/" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
       </div>
     </div>
@@ -513,33 +727,43 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
+      <div class="footer-grid">
+        <div class="footer-col">
           <p class="footer-logo">Hack2Hire 1.0</p>
           <p class="footer-tagline">Build. Compete. Get Hired.</p>
+          <p style="margin-top:12px;">T John Institute of Technology<br>Gottigere, Bannerghatta Road<br>Bengaluru, Karnataka 560083</p>
         </div>
-        <div class="footer-center">
-          <p>&copy; 2025 <strong>T John Institute of Technology</strong> | CSE Department</p>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#prizes">Prizes</a>
+          <a href="#faq">FAQ</a>
+          <a href="#guidelines">Guidelines</a>
         </div>
-        <div class="footer-right footer-socials">
-          <a href="#" class="social-icon" aria-label="GitHub">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="LinkedIn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </a>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>CSE Department</p>
+          <a href="tel:+918618474453">+91 86184 74453</a>
+          <a href="tel:+917338144731">+91 73381 44731</a>
+          <div class="footer-socials" style="margin-top:16px;">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 <strong>T John Institute of Technology</strong> — CSE Department</p>
+        <p class="footer-tagline">Hack2Hire 1.0</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Register Button -->
-  <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="floating-register btn btn-glow pulse-btn">Register 🚀</a>
-
+  <!-- Floating Register Button removed as requested -->
   <script src="script.js"></script>
 </body>
 </html>
