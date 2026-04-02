@@ -1,0 +1,386 @@
+/* ===== HACK2HIRE 1.0 ENHANCEMENTS =====  
+   Advanced Animations & Micro-interactions */
+
+/* ===== ENHANCED CARD HOVER EFFECTS ===== */
+.about-card {
+  position: relative;
+}
+
+.about-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.1) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.about-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== ENHANCED TIMELINE ANIMATIONS ===== */
+.timeline-v2-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-v2-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.timeline-v2-content:hover::before {
+  animation: slideGlow 0.6s ease-in-out;
+}
+
+@keyframes slideGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===== ENHANCED CYBER-DROP ANIMATIONS ===== */
+.drop-content {
+  position: relative;
+}
+
+.drop-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.drop-content:hover::after {
+  opacity: 1;
+}
+
+/* ===== INTERACTIVE TEXT ANIMATIONS ===== */
+.gl-checklist li {
+  position: relative;
+}
+
+.gl-checklist li::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: var(--accent-green);
+  transform: translateY(-50%);
+  transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gl-checklist li:hover::after {
+  height: 100%;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+/* ===== PRIZE CARD ENHANCEMENTS ===== */
+.prize-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 23px;
+}
+
+.prize-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== SECTION DIVIDER ANIMATIONS ===== */
+.section::after {
+  animation: expandLine 3s ease-in-out infinite;
+}
+
+@keyframes expandLine {
+  0%, 100% { width: min(400px, 60%); opacity: 0.5; }
+  50% { width: min(500px, 80%); opacity: 1; }
+}
+
+/* ===== ENHANCED STAT ANIMATION ===== */
+.stat-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.stat-item:hover::before {
+  animation: statShine 0.6s ease-in-out;
+}
+
+@keyframes statShine {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* ===== BUTTON SCALE ANIMATIONS ===== */
+.btn {
+  position: relative;
+  will-change: transform;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.btn:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* ===== INPUT & FORM ENHANCEMENTS ===== */
+.register-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(0, 240, 255, 0.02) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+.register-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== TAG PILL ENHANCEMENTS ===== */
+.tag-pill {
+  position: relative;
+  overflow: hidden;
+}
+
+.tag-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.tag-pill:hover::before {
+  animation: pillShine 0.5s ease-in-out;
+}
+
+@keyframes pillShine {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* ===== FLOATING ELEMENTS ===== */
+@keyframes slowFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes fastFloat {
+  0%, 100% { transform: translateY(0px); }
+  25% { transform: translateY(-8px); }
+  75% { transform: translateY(5px); }
+}
+
+/* ===== ENHANCED SCROLL REVEAL ===== */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.scroll-reveal.revealed {
+  animation: scrollReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===== GLITCH TEXT ENHANCEMENT ===== */
+.glitch:hover::before {
+  animation: glitch-1-hover 0.3s ease;
+}
+
+.glitch:hover::after {
+  animation: glitch-2-hover 0.3s ease;
+}
+
+@keyframes glitch-1-hover {
+  0% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); }
+  50% { clip-path: inset(10% 0 80% 0); transform: translate(-5px, 5px); }
+  100% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-2-hover {
+  0% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); }
+  50% { clip-path: inset(70% 0 15% 0); transform: translate(3px, -3px); }
+  100% { clip-path: inset(0% 0 0% 0); transform: translate(0, 0); }
+}
+
+/* ===== FAQ ICON ENHANCEMENT  ===== */
+.faq-icon {
+  will-change: transform;
+}
+
+.faq-item:hover .faq-icon {
+  animation: iconBounce 0.6s ease;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(45deg) scale(1.2); }
+}
+
+/* ===== CONTACT CARD ANIMATION ===== */
+.contact-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.15) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.contact-card:hover::after {
+  opacity: 1;
+}
+
+/* ===== ORGANIZER CARD GLOW ===== */
+.org-card {
+  position: relative;
+  background: var(--bg-card);
+  background-image: radial-gradient(circle at top right, rgba(0, 240, 255, 0.05), transparent 40%);
+}
+
+.org-card:hover {
+  background-image: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), transparent 40%);
+}
+
+/* ===== PREMIUM TRANSITIONS ===== */
+* {
+  --transition-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-on-scroll {
+  opacity:0;
+  transform: translateY(30px);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s var(--transition-easing);
+}
+
+/* ===== LOADER ENHANCEMENTS ===== */
+#preloader {
+  animation: preloaderFadeOut 0.8s ease-out 1.5s forwards;
+}
+
+@keyframes preloaderFadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* ===== COUNTER ANIMATION ===== */
+.stat-value {
+  position: relative;
+}
+
+.stat-value::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmerText 2s infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes shimmerText {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile for better performance */
+  .cyber-drop {
+    animation: none !important;
+  }
+
+  .floatHorizontal {
+    animation: none !important;
+  }
+
+  .stat-value::after {
+    display: none;
+  }
+
+  /* Simplified hover effects on mobile */
+  .about-card:hover {
+    transform: translateY(-6px) !important;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  .drop-content:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

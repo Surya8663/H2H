@@ -8,17 +8,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
 </head>
-<body>
+<body class="preload-active">
 
   <!-- Background Layers -->
   <div class="bg-layers-container">
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
     <div class="bg-gradient-layer"></div>
     <div class="bg-grid-layer"></div>
+    <div class="bg-circuit-layer"></div>
+    <div class="bg-radar-sweep"></div>
     <div class="bg-shapes-layer" id="bg-shapes"></div>
     <div class="bg-scanning-line"></div>
     <canvas id="particle-canvas"></canvas>
@@ -28,8 +32,19 @@
 
   <!-- Preloader -->
   <div id="preloader">
-    <div class="preloader-content">
-      <h1 class="glitch" data-text="H2H">H2H</h1>
+    <div class="preloader-content cinematic-entry">
+      <div class="logo-assembly" aria-label="Hack2Hire animated logo intro">
+        <div class="assembly-ring ring-outer"></div>
+        <div class="assembly-ring ring-inner"></div>
+        <div class="logo-container">
+          <img src="hackathon-logo.jpeg" alt="Hack2Hire Logo" class="assembly-logo">
+          <div class="logo-glitch-layer glitch-red"></div>
+          <div class="logo-glitch-layer glitch-cyan"></div>
+          <div class="logo-scan-line"></div>
+          <div class="logo-aura"></div>
+          <div class="logo-data-flow"></div>
+        </div>
+      </div>
       <div class="loading-bar"><div class="loading-fill"></div></div>
     </div>
   </div>
@@ -342,7 +357,7 @@
           <div class="timeline-v2-content timeline-v2-blue">
             <div class="timeline-v2-icon">📝</div>
             <h3>Team Registration</h3>
-            <p class="timeline-v2-date">April 2–12, 2026</p>
+            <p class="timeline-v2-date">April 3–13, 2026</p>
             <p>Team Registration opens via Luma. Join as a <strong>Team of 2 members</strong> (mandatory) and sign up before the deadline!</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
@@ -352,7 +367,7 @@
           <div class="timeline-v2-content timeline-v2-green">
             <div class="timeline-v2-icon">💳</div>
             <h3>Payment Window</h3>
-            <p class="timeline-v2-date">April 13–14, 2026 (until 11:59 PM)</p>
+            <p class="timeline-v2-date">April 13–15, 2026 (until 11:59 PM)</p>
             <p>Complete payment via HelloCB App. Entry fee: <strong>₹200/team</strong>.</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-green"></div>
@@ -362,7 +377,7 @@
           <div class="timeline-v2-content timeline-v2-blue">
             <div class="timeline-v2-icon">🌙</div>
             <h3>Themes Released!</h3>
-            <p class="timeline-v2-date">April 15 — Midnight</p>
+            <p class="timeline-v2-date">April 16 — Midnight</p>
             <p>Hackathon themes go live at midnight. Get ready to ideate and strategize!</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
@@ -372,7 +387,7 @@
           <div class="timeline-v2-content timeline-v2-green">
             <div class="timeline-v2-icon">💻</div>
             <h3>Build Phase</h3>
-            <p class="timeline-v2-date">April 15–22, 2026</p>
+            <p class="timeline-v2-date">April 16–23, 2026</p>
             <p>1 full week to build your solution. Design, develop, and deploy your project.</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-green"></div>
@@ -382,7 +397,7 @@
           <div class="timeline-v2-content timeline-v2-blue">
             <div class="timeline-v2-icon">📤</div>
             <h3>Submission Deadline</h3>
-            <p class="timeline-v2-date">April 22, 2026</p>
+            <p class="timeline-v2-date">April 23, 2026</p>
             <p>Submit your <strong>GitHub Repo + Deployed Link + Demo Video + Project Brief</strong>. No extensions!</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
@@ -402,7 +417,7 @@
           <div class="timeline-v2-content timeline-v2-blue">
             <div class="timeline-v2-icon">🎤</div>
             <h3>Final Presentations</h3>
-            <p class="timeline-v2-date">April 28, 2026</p>
+            <p class="timeline-v2-date">April 29, 2026</p>
             <p>All Top 10 Teams present live in front of judges and industry experts. Winners are crowned!</p>
           </div>
           <div class="timeline-v2-dot timeline-v2-dot-blue"></div>
@@ -454,42 +469,119 @@
   </section>
 
   <!-- PRIZES SECTION -->
-  <section class="section" id="prizes">
+  <section class="section prizes-section" id="prizes">
+    <div class="prizes-background-effect"></div>
     <div class="container">
-      <h2 class="section-title">Prizes & <span class="accent">Rewards</span></h2>
-      <div class="podium-grid">
-        
-        <div class="prize-card prize-silver scroll-reveal podium-left" data-delay="1">
-          <div class="prize-rank">🥈</div>
-          <h3>2nd Place</h3>
-          <ul class="prize-list">
-            <li>Goodies 🎁</li>
-            <li>Certificate 📜</li>
-          </ul>
-        </div>
-
-        <div class="prize-card prize-gold scroll-reveal podium-center" data-delay="0">
-          <div class="prize-rank">🥇</div>
-          <h3>1st Place <br><span class="prize-sub">(Team of 2)</span></h3>
-          <ul class="prize-list">
-            <li>Paid Internship 💼</li>
-            <li>Certificate 📜</li>
-            <li>Goodies 🎁</li>
-          </ul>
-        </div>
-
-        <div class="prize-card prize-bronze scroll-reveal podium-right" data-delay="2">
-          <div class="prize-rank">🥉</div>
-          <h3>3rd Place</h3>
-          <ul class="prize-list">
-            <li>Minimal Goodies 🎁</li>
-            <li>Certificate 📜</li>
-          </ul>
-        </div>
-
+      <div class="prizes-header">
+        <h2 class="section-title">Prizes & <span class="accent">Rewards</span></h2>
+        <p class="prizes-subtitle">Compete. Win. Launch Your Career</p>
       </div>
-      <div class="prizes-extra scroll-reveal">
-        <p>✨ Top 10 teams qualify for the Final Round on <strong>April 28th</strong>.</p>
+      
+      <div class="podium-grid">
+        <!-- SILVER MEDAL -->
+        <div class="prize-card prize-silver scroll-reveal podium-left" data-delay="1">
+          <div class="prize-spotlight silver-glow"></div>
+          <div class="prize-card-inner">
+            <div class="prize-rank-wrapper">
+              <div class="prize-rank">🥈</div>
+              <div class="rank-label">Runner-Up</div>
+            </div>
+            <h3>2nd Place <span class="prize-team-info">(Team of 2)</span></h3>
+            <div class="prize-list-container">
+              <ul class="prize-list">
+                <li class="prize-item highlight-item">
+                  <span class="prize-icon">💸</span>
+                  <span class="prize-text"><strong>Cash Prize - Rs 2,000</strong></span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">💼</span>
+                  <span class="prize-text">Premium Goodies Pack</span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">📜</span>
+                  <span class="prize-text">Merit Certificate</span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">🎁</span>
+                  <span class="prize-text">Exclusive Swag</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- GOLD MEDAL (CHAMPION) -->
+        <div class="prize-card prize-gold scroll-reveal podium-center" data-delay="0">
+          <div class="crown-badge">👑</div>
+          <div class="prize-spotlight gold-glow"></div>
+          <div class="prize-card-inner">
+            <div class="prize-rank-wrapper">
+              <div class="prize-rank">🥇</div>
+              <div class="rank-label champion-label">GRAND CHAMPION</div>
+            </div>
+            <h3 class="champion-title">1st Place <span class="prize-team-info">(Team of 2)</span></h3>
+            <div class="prize-list-container">
+              <ul class="prize-list champion-list">
+                <li class="prize-item highlight-item">
+                  <span class="prize-icon">💰</span>
+                  <span class="prize-text"><strong>Paid Internship</strong></span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">🏆</span>
+                  <span class="prize-text">Championship Certificate</span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">🎁</span>
+                  <span class="prize-text">Deluxe Goodies Bundle</span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">🔗</span>
+                  <span class="prize-text">Winner Spotlight Post on LinkedIn</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRONZE MEDAL -->
+        <div class="prize-card prize-bronze scroll-reveal podium-right" data-delay="2">
+          <div class="prize-spotlight bronze-glow"></div>
+          <div class="prize-card-inner">
+            <div class="prize-rank-wrapper">
+              <div class="prize-rank">🥉</div>
+              <div class="rank-label">Third Place</div>
+            </div>
+            <h3>3rd Place <span class="prize-team-info">(Team of 2)</span></h3>
+            <div class="prize-list-container">
+              <ul class="prize-list">
+                <li class="prize-item highlight-item">
+                  <span class="prize-icon">💸</span>
+                  <span class="prize-text"><strong>Cash Prize - Rs 1,000</strong></span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">💼</span>
+                  <span class="prize-text">Goodies Package</span>
+                </li>
+                <li class="prize-item">
+                  <span class="prize-icon">📜</span>
+                  <span class="prize-text">Achievement Certificate</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- QUALIFICATION INFO -->
+      <div class="qualification-banner scroll-reveal">
+        <div class="qualification-content">
+          <div class="qualification-icon">✨</div>
+          <div class="qualification-text">
+            <p class="qualification-title">Top 10 Teams Advance</p>
+            <p>Qualify for the Grand Finals Presentation on <strong>April 29th</strong> for final judging and awarding</p>
+          </div>
+          <div class="qualification-sparkle"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -510,10 +602,15 @@
     <div class="container">
       <h2 class="section-title">Evaluation <span class="accent">Criteria</span></h2>
       <div class="eval-card scroll-reveal">
+        <div class="eval-header">
+          <p class="eval-kicker">Judging Blueprint</p>
+          <p class="eval-footnote">100-point weighted matrix used for finalist selection.</p>
+        </div>
         
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">Innovation</span>
+            <span class="eval-name"><span class="eval-icon">💡</span> Innovation</span>
+            <span class="eval-percent">20%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-1" data-width="20%"></div>
@@ -522,7 +619,8 @@
         
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">Technical Strength</span>
+            <span class="eval-name"><span class="eval-icon">⚙️</span> Technical Strength</span>
+            <span class="eval-percent">25%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-2" data-width="25%"></div>
@@ -531,7 +629,8 @@
 
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">Prototype Working</span>
+            <span class="eval-name"><span class="eval-icon">🧪</span> Prototype Working</span>
+            <span class="eval-percent">25%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-3" data-width="25%"></div>
@@ -540,7 +639,8 @@
 
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">Impact / Use Case</span>
+            <span class="eval-name"><span class="eval-icon">🌍</span> Impact / Use Case</span>
+            <span class="eval-percent">15%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-4" data-width="15%"></div>
@@ -549,7 +649,8 @@
 
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">UI/UX</span>
+            <span class="eval-name"><span class="eval-icon">🎨</span> UI/UX</span>
+            <span class="eval-percent">5%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-5" data-width="5%"></div>
@@ -558,7 +659,8 @@
 
         <div class="eval-item">
           <div class="eval-label">
-            <span class="eval-name">Presentation</span>
+            <span class="eval-name"><span class="eval-icon">🎤</span> Presentation</span>
+            <span class="eval-percent">10%</span>
           </div>
           <div class="eval-bar-bg">
             <div class="eval-bar-fill eval-color-6" data-width="10%"></div>
@@ -595,13 +697,13 @@
     <div class="container">
       <div class="register-card scroll-reveal">
         <h2 class="register-title glow-text">Ready to <span class="accent">Build Your Future?</span></h2>
-        <p class="register-subtext">Register between April 2–12. Payment via HelloCB App (April 13–14, 11:59 PM). <strong>₹200 per team.</strong></p>
+        <p class="register-subtext">Register between April 3–13. Payment via HelloCB App (April 13–15, 11:59 PM). <strong>₹200 per team.</strong></p>
         <div class="register-action">
           <a href="https://luma.com/d197oz1h" target="_blank" rel="noopener noreferrer" class="btn btn-glow pulse-btn">Register on Luma →</a>
         </div>
         <p class="register-payment-note">Payment will be reflected in the HelloCB App by college management.</p>
         <div class="register-closing">
-          <span class="pulsing-dot-green"></span> Registration closes April 12th
+          <span class="pulsing-dot-green"></span> Registration closes April 13th
         </div>
       </div>
     </div>
@@ -688,6 +790,10 @@
 
       <div class="faculty-organiser scroll-reveal">
         <div class="org-card org-faculty">
+          <div class="org-card-top">
+            <div class="org-avatar" data-initial="DS">DS</div>
+            <span class="org-status">Core Mentor</span>
+          </div>
           <div class="org-icon">🎓</div>
           <h3>Dr. Sudaroli</h3>
           <p class="org-role">Faculty Coordinator</p>
@@ -697,24 +803,40 @@
 
       <div class="student-org-grid">
         <div class="org-card scroll-reveal" data-delay="0">
+          <div class="org-card-top">
+            <div class="org-avatar" data-initial="GD">GD</div>
+            <span class="org-status">Build Lead</span>
+          </div>
           <h3>Gomathi D</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+918618474453" class="org-contact"><span class="org-phone-icon">📞</span> 8618474453</a>
           <a href="https://www.linkedin.com/in/gomathi-dhandapani-47435b350" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="1">
+          <div class="org-card-top">
+            <div class="org-avatar" data-initial="GS">GS</div>
+            <span class="org-status">Ops Lead</span>
+          </div>
           <h3>G. Surya</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+918667234480" class="org-contact"><span class="org-phone-icon">📞</span> 8667234480</a>
           <a href="https://www.linkedin.com/in/g-surya-63a01b290" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="2">
+          <div class="org-card-top">
+            <div class="org-avatar" data-initial="AS">AS</div>
+            <span class="org-status">Tech Lead</span>
+          </div>
           <h3>Ahmed Sufiyan</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+917483368337" class="org-contact"><span class="org-phone-icon">📞</span> 7483368337</a>
           <a href="https://www.linkedin.com/in/ahmedsufiyan209/" target="_blank" rel="noopener noreferrer" class="org-social-link">LinkedIn →</a>
         </div>
         <div class="org-card scroll-reveal" data-delay="3">
+          <div class="org-card-top">
+            <div class="org-avatar" data-initial="YC">YC</div>
+            <span class="org-status">Design Lead</span>
+          </div>
           <h3>Yashaswini C</h3>
           <p class="org-role">Student Organizer</p>
           <a href="tel:+917338144731" class="org-contact"><span class="org-phone-icon">📞</span> 7338144731</a>

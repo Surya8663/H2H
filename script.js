@@ -208,12 +208,17 @@
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const introDuration = prefersReducedMotion ? 600 : 3400;
+
       setTimeout(() => {
-        preloader.style.opacity = '0';
+        preloader.classList.add('exit');
+        document.body.classList.remove('preload-active');
+        document.body.classList.add('page-ready');
         setTimeout(() => {
           preloader.style.display = 'none';
-        }, 500);
-      }, 1600); // Give enough time for the "loading" animation
+        }, 800);
+      }, introDuration);
     }
   });
 
@@ -483,6 +488,148 @@
     btn.addEventListener('mouseenter', () => {
       btn.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     });
+  });
+
+  // ===== ENHANCED MOUSE TRACKING FOR CARDS =====
+  document.querySelectorAll('.about-card, .contact-card, .drop-content').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      card.style.setProperty('--mouse-x', `${x}%`);
+      card.style.setProperty('--mouse-y', `${y}%`);
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    });
+  });
+
+  // ===== ORGANIZER CARD TILT INTERACTION =====
+  document.querySelectorAll('.org-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      if (window.innerWidth < 900) return;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 8;
+      const rotateX = ((0.5 - (y / rect.height)) * 8);
+
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ===== ENHANCED SCROLL REVEAL =====
+  const revealElements = document.querySelectorAll('.scroll-reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Add stagger delay for children
+        const children = entry.target.querySelectorAll('.gl-checklist li, .tag-pill');
+        children.forEach((child, idx) => {
+          child.style.animationDelay = `${idx * 0.1}s`;
+          child.classList.add('stagger-in');
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ===== PARALLAX SCROLL EFFECT FOR SECTIONS =====
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.bg-gradient-layer, .bg-orb');
+    
+    parallaxElements.forEach((el, idx) => {
+      const speed = 0.3 + (idx * 0.1);
+      el.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+  });
+
+  // ===== BUTTON RIPPLE EFFECT =====
+  document.querySelectorAll('.btn, .tag-pill, .org-contact').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
+      
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  // ===== ENHANCED NAV SCROLL EFFECT =====
+  let lastScrollTop = 0;
+  const navbarElement = document.getElementById('navbar');
+  
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (Math.abs(scrollTop - lastScrollTop) > 50) {
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbarElement.style.transform = 'translateY(-100%)';
+      } else {
+        navbarElement.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }
+    navbarElement.style.transition = 'transform 0.3s ease-out';
+  });
+
+  // ===== CARD ELEVATION ON SCROLL =====
+  document.querySelectorAll('.about-card, .prize-card, .org-card').forEach(card => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    observer.observe(card);
+  });
+
+  // ===== INTERACTIVE CURSOR FEEDBACK =====
+  document.addEventListener('pointermove', (e) => {
+    const glow = document.getElementById('mouse-glow');
+    if (glow) {
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      glow.style.left = x + 'px';
+      glow.style.top = y + 'px';
+      
+      // Change glow color based on which section we're in
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          if (section.id === 'timeline') {
+            glow.style.background = 'radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%)';
+          } else if (section.id === 'prizes') {
+            glow.style.background = 'radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 70%)';
+          }
+        }
+      });
+    }
   });
 
 })();
